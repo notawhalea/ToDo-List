@@ -2,7 +2,8 @@
 <html>
 <head>
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@1.x/dist/vuetify.min.css" rel="stylesheet">
+  <link rel="icon" href="https://img.icons8.com/external-phatplus-lineal-color-phatplus/64/null/external-check-calculator-tools-phatplus-lineal-color-phatplus.png" type="image/png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
   <style>
@@ -12,15 +13,22 @@
     [v-cloak] {
       display: none;
     }
+    v-list-item {
+      display: flex;
+    }
+    v-list-item-content {
+      margin-top: 20px;
+      margin-left: 20px;
+    }
   </style>
-  <title>Задачи</title>
+  <title>ToDo List</title>
 </head>
 <body>
 <div id="app" v-cloak>
   <v-app :dark="isDark">
     <v-toolbar color="blue darken-4" dark>
       <v-toolbar-side-icon></v-toolbar-side-icon>
-      <v-toolbar-title class="headline">Список дел</v-toolbar-title>
+      <v-toolbar-title class="headline">ToDo List</v-toolbar-title>
 
       <v-spacer></v-spacer>
 
@@ -31,7 +39,7 @@
             </v-icon>
           </v-btn>
         </template>
-        <span>{{isDark ? 'Светлая тема' : 'Темная тема'}}</span>
+        <span>{{isDark ? 'Light theme' : 'Dark theme'}}</span>
       </v-tooltip>
     </v-toolbar>
     <v-container>
@@ -45,49 +53,54 @@
                 </v-subheader>
                 <v-spacer></v-spacer>
 
-                <p class="text-xs-right"><b>{{todos.length}}</b> Задач</p>
+                <p class="text-xs-right"><b>{{todos.length}}</b> Tasks</p>
 
                 <v-flex xs12>
                   <v-text-field
-                    clearable
-                    v-model="todoTitle"
-                    id="newTodo"
-                    name="newTodo"
-                    label="Введите название задачи"
-                    @keyup.enter="addTodo"
-                    :dark="isDark"
+                          clearable
+                          v-model="todoTitle"
+                          id="newTodo"
+                          name="newTodo"
+                          label="Please, enter task name"
+                          @keyup.enter="addTodo"
+                          :dark="isDark"
                   >
                   </v-text-field>
                 </v-flex>
               </v-container>
+              <!-- ------------------------------------------------------------------------------------------------------- -->
               <v-subheader class="subheading" v-if="todos.length === 0">
-                У вас 0 задач, добавьте новую
+                You have 0 tasks , please, add new.
               </v-subheader>
               <v-subheader class="subheading" v-else>
-                Ваши задачи
+                Your tasks
               </v-subheader>
               <div v-for="(todo, i) in todos" :key="i">
-                <v-list-tile avatar>
-                  <v-list-tile-action>
+                <v-list-item avatar>
+                  <v-list-item-action>
                     <v-checkbox
-                      v-if="!todo.done"
-                      v-model="todo.done"
-                      :dark="isDark"
+                            v-if="!todo.done"
+                            v-model="todo.done"
+                            :dark="isDark"
                     ></v-checkbox>
-                  </v-list-tile-action>
-                  <v-list-tile-content>
-                    <v-list-tile-title :class="{done: todo.done}">
+                  </v-list-item-action>
+                  <v-list-item-content>
+                    <v-list-item-title :class="{done: todo.done}" title-smth>
                       {{todo.title | capitalize}}
-                    </v-list-tile-title>
-                    <v-list-tile-sub-title>
-                      Добавлено в: {{todo.date | date}}
-                    </v-list-tile-sub-title>
-                  </v-list-tile-content>
+                    </v-list-item-title>
+                    <v-list-item-subtitle>
+                      Added: {{todo.date | date}}
+                    </v-list-item-subtitle>
+                  </v-list-item-content>
                   <v-btn icon ripple color="red" @click="removeTodo(todo.id)">
                     <v-icon class="white--text">close</v-icon>
                   </v-btn>
-                </v-list-tile>
+                </v-list-item>
               </div>
+              <!-- ------------------------------------------------------------------------------------------------------- -->
+
+              <!-- ------------------------------------------------------------------------------------------------------- -->
+
             </v-list>
           </v-card>
         </v-flex>
@@ -96,50 +109,8 @@
   </v-app>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
-<script>
-  new Vue({
-    el: '#app',
-    data() {
-      return {
-        isDark: true,
-        show: true,
-        todoTitle: '',
-        todos: []
-      }
-    },
-    methods: {
-      addTodo() {
-        const title = this.todoTitle.trim()
-        if (!title) {
-          return
-        }
-        this.todos.push({
-          title: title,
-          id: Math.random(),
-          done: false,
-          date: new Date()
-        })
-        this.todoTitle = ''
-      },
-      removeTodo(id) {
-        this.todos = this.todos.filter(t => t.id !== id)
-      }
-    },
-    filters: {
-      capitalize(value) {
-        return value.toString().charAt(0).toUpperCase() + value.slice(1)
-      },
-      date(value) {
-        return new Intl.DateTimeFormat('ru-RU', {
-          year: 'numeric',
-          month: 'long',
-          day: '2-digit'
-        }).format(new Date(value))
-      }
-    }
-  })
-</script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vuetify@1.x/dist/vuetify.js"></script>
+<script src="main.vue"></script>
 </body>
 </html>
