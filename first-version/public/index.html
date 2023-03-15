@@ -23,6 +23,9 @@
     #app {
       font-size: 25px;
     }
+    v-list-item-subtitle {
+      font-size: 10px;
+    }
     /* html { */
     /*   font-size: 20px; */
     /* } */
@@ -87,6 +90,7 @@
                     <v-checkbox
                             v-if="!todo.done"
                             v-model="todo.done"
+                            @change="completeTodo(todo.id)"
                             :dark="isDark"
                     ></v-checkbox>
                   </v-list-item-action>
@@ -95,7 +99,8 @@
                       {{todo.title | capitalize}}
                     </v-list-item-title>
                     <v-list-item-subtitle>
-                      Added: {{todo.date | date}}
+                      Added: {{todo.createdAt | date(true)}}
+                      (Updated: {{todo.updatedAt | date(true)}})
                     </v-list-item-subtitle>
                   </v-list-item-content>
                   <v-btn icon ripple color="red" @click="removeTodo(todo.id)">
