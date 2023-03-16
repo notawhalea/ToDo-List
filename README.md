@@ -7,6 +7,7 @@ Main stack of these application: *JavaScript, Vue.JS, Express.JS, Vuetify, MySQL
 It's my *vision* in realization *task of making ToDo list*.
 **********
 **What I've done**:question:
+
 This project is divided into 2 versions:
 1. Without GraphQL
 2. With GraphQL
@@ -26,6 +27,7 @@ This project is divided into 2 versions:
 8. Enjoy it!
 **********
 **How does it look like**:eyes:
+
 *Dark mode*
 ![howdoesitlooklikedark](first-version/src/howdoesitlooklike1.png)
 *Light mode*
