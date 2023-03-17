@@ -2,9 +2,9 @@
 **********
 **ToDo List by Vue.JS**:clipboard:
 
-Main stack of these application: *JavaScript, Vue.JS, Express.JS, Vuetify, MySQL, Sequelize*:stuck_out_tongue:
+Main stack of this application: *JavaScript, Vue.JS, Express.JS, Vuetify, MySQL, Sequelize*:stuck_out_tongue:
 
-It's my *vision* in realization *task of making ToDo list*.
+This is my *vision* for the implementation of the *task of creating a ToDo list*.
 **********
 **What I've done**:question:
 
@@ -23,8 +23,9 @@ This project is divided into 2 versions:
    These command will start the project in development mode.
 5. Also, u can use `npm run start` to use in production mode.
 6. In MySQL Workbench create a schema with name `node-todo`
-7. In browser search bar type next text `http://localhost:3000/`
-8. Enjoy it!
+7. In *utils/database.js* change info for you. 
+8. In browser search bar type next text `http://localhost:3000/`
+9. Enjoy it!
 **********
 **How does it look like**:eyes:
 
@@ -37,4 +38,4 @@ I just relax and gained experience here.
 
 Still in progress? Convert to draft!:wink:
 
->Together we can't fall.Our bond would never break, and there'd be no mistake.Our love would conquer all:microphone:S3RL — Pika Girl
+>Together we can't fall. Our bond would never break, and there'd be no mistake. Our love would conquer all:microphone:S3RL — Pika Girl
